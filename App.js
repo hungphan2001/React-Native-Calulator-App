@@ -8,22 +8,22 @@
  */
 
 import { useState } from 'react';
-import { ScrollView, Text, StatusBar, StyleSheet, Switch, View } from 'react-native';
+import { ScrollView, Text, StatusBar, StyleSheet, Switch, SafeAreaView  } from 'react-native';
 import Button from './src/components/Button';
 import { ThemeContext } from './src/context/ThemeContext';
 import {myColors} from './src/styles/Colors';
+import MyKeyboard from './src/components/MyKeyboard';
  const App = () => {
   const [theme, setTheme] = useState('light');
   return (
     <ThemeContext.Provider value={theme}>
-    <View style={theme === 'light' ? styles.container : [styles.container, { backgroundColor: 'black' }]}>
-      <StatusBar styles="auto"></StatusBar>
-      <Switch
-        value={theme === 'dark'}
-        onValueChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      />
-      <Button title='3'></Button>
-    </View>
+      <SafeAreaView  style={theme === 'light' ? styles.container : [styles.container, {backgroundColor: 'black'}]}>
+        <Switch
+          value={theme === 'dark'}
+          onValueChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        />
+        <MyKeyboard />
+      </SafeAreaView>
     </ThemeContext.Provider>
   );
 };
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: myColors.light,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
 });
 
