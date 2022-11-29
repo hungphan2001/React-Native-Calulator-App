@@ -9,6 +9,7 @@
 
 import { useState } from 'react';
 import { ScrollView, Text, StatusBar, StyleSheet, Switch, View } from 'react-native';
+import Button from './src/components/Button';
 import { ThemeContext } from './src/context/ThemeContext';
 import {myColors} from './src/styles/Colors';
  const App = () => {
@@ -21,6 +22,7 @@ import {myColors} from './src/styles/Colors';
         value={theme === 'dark'}
         onValueChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       />
+      <Button title='3'></Button>
     </View>
     </ThemeContext.Provider>
   );
